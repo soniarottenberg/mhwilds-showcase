@@ -1,4 +1,4 @@
-interface Weakness {
+interface WeaknessProps {
   element: string;
   status: string;
   effect: string;
@@ -6,11 +6,11 @@ interface Weakness {
   id: number;
 }
 
-export interface Monster {
+export interface MonsterProps {
   id: number;
   name: string;
   species: string;
   size: string;
   description: string;
-  weaknesses: Weakness[]
+  weaknesses: WeaknessProps[];
 }

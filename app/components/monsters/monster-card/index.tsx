@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { Monster } from "./props";
+import { MonsterProps } from "./props";
 
-const MonsterCard = ({ monster }: { monster: Monster }) => {
+const MonsterCard = ({ monster }: { monster: MonsterProps }) => {
   const weaknesses = useMemo(() => {
     return monster?.weaknesses.map((weakness) => {
       return {

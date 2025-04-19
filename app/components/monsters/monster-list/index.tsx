@@ -1,12 +1,22 @@
 import MonsterCard from "../monster-card";
 import { useGetMonsters } from "../../../hooks/useGetMonsters";
 import { useMemo } from "react";
+import { useMonsterStore } from "../../../store/monster-store";
+
 const MonsterList = () => {
   const { data: monsters, isLoading, error } = useGetMonsters();
-  console.log(monsters);
+  const { searchTerm } = useMonsterStore();
+
   const filteredMonsters = useMemo(() => {
-    return monsters?.filter((monster) => monster.size !== "large") || [];
-  }, [monsters]);
+    return (
+      monsters?.filter((monster) => {
+        const matchesSearch =
+          monster.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          monster.species.toLowerCase().includes(searchTerm.toLowerCase());
+        return monster.size !== "large" && matchesSearch;
+      }) || []
+    );
+  }, [monsters, searchTerm]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: ...</div>;
