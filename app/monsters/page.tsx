@@ -1,17 +1,17 @@
 "use client";
 import MonsterList from "../components/monsters/monster-list";
 import MonsterSearch from "../components/monsters/monster-search";
-import { useMonsterStore } from "../store/monster-store";
-
+import MonsterDisplaySwitch from "../components/monsters/monster-display-switch";
+import { useMonsterDisplayStore } from "../store/monster-display-store";
+import MonsterTable from "../components/monsters/monster-table";
 const MonstersPage = () => {
-  const { searchTerm } = useMonsterStore();
-
+  const { display } = useMonsterDisplayStore();
   return (
-    <div>
+    <div className='flex flex-col gap-2'>
       <h1 className='font-semibold'>Monster Hunter Wilds Monsters</h1>
-      {/* TODO: display either card or a table */}
+      <MonsterDisplaySwitch />
       <MonsterSearch />
-      <MonsterList />
+      {display === "card" ? <MonsterList /> : <MonsterTable />}
     </div>
   );
 };

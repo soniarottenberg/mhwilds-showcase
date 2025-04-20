@@ -1,7 +1,7 @@
 import MonsterCard from "../monster-card";
 import { useGetMonsters } from "../../../hooks/useGetMonsters";
 import { useMemo } from "react";
-import { useMonsterStore } from "../../../store/monster-store";
+import { useMonsterStore } from "../../../store/monster-search-store";
 
 const MonsterList = () => {
   const { data: monsters, isLoading, error } = useGetMonsters();

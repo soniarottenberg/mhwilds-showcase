@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { SearchProps } from "./props";
 
 const Search = ({ onSearch, searchTerm, value }: SearchProps) => {
@@ -10,7 +10,15 @@ const Search = ({ onSearch, searchTerm, value }: SearchProps) => {
     [onSearch],
   );
 
-  return <input type='text' placeholder={searchTerm} value={value} onChange={handleChange} />;
+  return (
+    <input
+      type='text'
+      placeholder={searchTerm}
+      value={value}
+      onChange={handleChange}
+      className='border-2 border-gray-300 rounded-md p-2'
+    />
+  );
 };
 
 export default Search;

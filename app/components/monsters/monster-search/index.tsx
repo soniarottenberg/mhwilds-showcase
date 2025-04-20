@@ -1,4 +1,4 @@
-import { useMonsterStore } from "../../../store/monster-store";
+import { useMonsterStore } from "../../../store/monster-search-store";
 import Search from "../../ui/search";
 
 const MonsterSearch = () => {
