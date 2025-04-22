@@ -4,6 +4,7 @@ import MonsterSearch from "../components/monsters/monster-search";
 import MonsterDisplaySwitch from "../components/monsters/monster-display-switch";
 import { useMonsterDisplayStore } from "../store/monster-display-store";
 import MonsterTable from "../components/monsters/monster-table";
+
 const MonstersPage = () => {
   const { display } = useMonsterDisplayStore();
   return (
