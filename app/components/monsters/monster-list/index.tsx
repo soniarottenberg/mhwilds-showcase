@@ -18,6 +18,7 @@ const MonsterList = () => {
     );
   }, [monsters, searchTerm]);
 
+  // TODO: display a loading and error component
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: ...</div>;
 

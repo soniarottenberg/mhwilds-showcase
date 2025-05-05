@@ -1,29 +1,32 @@
 import { ColDef } from "ag-grid-community";
 import { useState } from "react";
 import Table from "../../ui/table";
+import { useGetMonsters } from "../../../hooks/useGetMonsters";
 
 interface RowData {
-  make: string;
-  model: string;
-  price: number;
-  electric: boolean;
+  name: string;
+  species: string;
+  weaknesses: any;
+  resistances: any;
 }
 
 const MonsterTable = () => {
   // TODO: display a table of monsters
-  const [rowData, setRowData] = useState<RowData[]>([
-    { make: "Tesla", model: "Model Y", price: 64950, electric: true },
-    { make: "Ford", model: "F-Series", price: 33850, electric: false },
-    { make: "Toyota", model: "Corolla", price: 29600, electric: false },
-  ]);
+  const { data: monsters, isLoading, error } = useGetMonsters();
+
+  const [rowData, setRowData] = useState<RowData[]>(monsters);
 
   // Column Definitions: Defines the columns to be displayed.
   const [colDefs, setColDefs] = useState<ColDef<RowData>[]>([
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
-    { field: "electric" },
+    { field: "name" },
+    { field: "species" },
+    { field: "weaknesses" },
+    { field: "resistances" },
   ]);
+
+  // TODO: display a loading and error component
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: ...</div>;
 
   return (
     <div style={{ height: 500 }}>
